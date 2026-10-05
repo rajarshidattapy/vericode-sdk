@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "vericode-sdk"
+version = "0.1.0"
+description = "Run LLM-generated code through fuzzing and formal verification before execution."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+authors = [{ name = "Rajarshi Datta" }]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest", "build", "twine"]
+
+[project.urls]
+Homepage = "https://github.com/rajarshidattapy/vericode-sdk"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/vericode"]
