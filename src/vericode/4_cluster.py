@@ -1,4 +1,6 @@
-from .diff_analysis import behavior
+from importlib import import_module
+
+behavior = import_module(".2_diff_analysis", __package__).behavior
 
 
 def behavioral_distance(a: list[dict], b: list[dict]) -> float:

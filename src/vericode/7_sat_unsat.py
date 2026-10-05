@@ -1,9 +1,10 @@
+from importlib import import_module
 from typing import Any
 
 import z3
 
-from .formal_specification import Spec
-from .smt_solver import solve
+Spec = import_module(".5_formal_specification", __package__).Spec
+solve = import_module(".6_smt_solver", __package__).solve
 
 
 def to_python(value: z3.ExprRef) -> Any:

@@ -1,7 +1,8 @@
 import re
 from dataclasses import dataclass, field
+from importlib import import_module
 
-from .natural_generation import LLM
+LLM = import_module(".1_natural_generation", __package__).LLM
 
 LABELS = {"pre": "preconditions", "post": "postconditions", "inv": "invariants"}
 

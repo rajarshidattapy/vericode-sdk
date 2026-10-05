@@ -1,9 +1,10 @@
 import ast
 from fractions import Fraction
+from importlib import import_module
 
 import z3
 
-from .formal_specification import Spec
+Spec = import_module(".5_formal_specification", __package__).Spec
 
 PI_BOUNDS = ("3.14159265", "3.14159266")
 

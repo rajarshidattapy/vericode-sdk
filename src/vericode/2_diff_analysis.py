@@ -1,8 +1,9 @@
 import json
 import random
+from importlib import import_module
 from typing import Callable, Optional
 
-from .run_fuzz_input import run_fuzz_inputs
+run_fuzz_inputs = import_module(".3_run_fuzz_input", __package__).run_fuzz_inputs
 
 Fuzzer = Callable[[str, str, list[list]], list[list]]
 
