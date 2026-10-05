@@ -2,7 +2,8 @@ import re
 from dataclasses import dataclass, field
 from importlib import import_module
 
-LLM = import_module(".1_natural_generation", __package__).LLM
+natural_generation = import_module(".1_natural_generation", __package__)
+LLM = natural_generation.LLM
 
 LABELS = {"pre": "preconditions", "post": "postconditions", "inv": "invariants"}
 
@@ -44,6 +45,6 @@ def spec_from_contract(func_name: str, params: list[str], contract: str, require
     return Spec(func_name, list(params), requirement=requirement, **parse_contract(contract))
 
 
-def spec_from_requirement(requirement: str, func_name: str, params: list[str], llm: LLM) -> Spec:
+def spec_from_requirement(requirement: str, func_name: str, params: list[str], llm: LLM = natural_generation.llm) -> Spec:
     contract = llm(TEMPLATE.format(params=", ".join(params), requirement=requirement))
     return spec_from_contract(func_name, params, contract, requirement)

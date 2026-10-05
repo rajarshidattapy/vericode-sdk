@@ -1,5 +1,6 @@
 from importlib import import_module
 
+llm = import_module(".1_natural_generation", __package__).llm
 generate_candidates = import_module(".1_natural_generation", __package__).generate_candidates
 differential_analysis = import_module(".2_diff_analysis", __package__).differential_analysis
 run_fuzz_input = import_module(".3_run_fuzz_input", __package__).run_fuzz_input
@@ -19,6 +20,7 @@ __all__ = [
     "differential_analysis",
     "generate_candidates",
     "interpret",
+    "llm",
     "run_fuzz_input",
     "run_fuzz_inputs",
     "select_candidate",
