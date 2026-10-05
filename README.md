@@ -8,10 +8,16 @@ pip install vericode-sdk
 ```
 
 ```python
-from vericode import verify
+from vericode import differential_analysis, generate_candidates, select_candidate, spec_from_contract, verify
 
-print(verify("def f(x): return x + 1"))
+candidates = generate_candidates("Return the area of a circle", llm, n=5, func_name="area")
+chosen = select_candidate(differential_analysis(candidates, "area", arity=1))
+spec = spec_from_contract("area", ["r"], "r >= 0\nresult == pi * r * r")
+
+print(verify(chosen["code"], spec))
 ```
+
+`llm` is any callable that takes a prompt string and returns a completion string.
 
 ## Release
 

@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.9"
 license = "MIT"
 authors = [{ name = "Rajarshi Datta" }]
-dependencies = []
+dependencies = ["z3-solver>=4.12"]
 
 [project.optional-dependencies]
 dev = ["pytest", "build", "twine"]
